@@ -1,0 +1,18 @@
+services:
+    frontend:
+        image: gelzy/docker-hw-ipr:latest
+        ports:
+            - "8080:80"
+
+    api:
+        image: containous/whoami
+
+    logger:
+        image: busybox
+        volumes:
+        - ./logger.sh:/logger.sh
+        - logger-data:/data
+        command: ["sh", "/logger.sh"]
+
+volumes:
+    logger-data:
